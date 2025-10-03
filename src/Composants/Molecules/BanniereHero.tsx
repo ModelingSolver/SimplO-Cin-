@@ -1,8 +1,8 @@
 import React from 'react';
 import { type FilmOrSerie } from '../../types/simploCineTypes';
 import Titre from '../Atoms/Titre';
-import Bouton from '../Atoms/Bouton';
-import { FaPlay, FaInfoCircle } from 'react-icons/fa';
+// import Bouton from '../Atoms/Bouton';
+// import { FaPlay, FaInfoCircle } from 'react-icons/fa';
 
 interface BanniereHeroProps {
   film: FilmOrSerie; 
@@ -10,13 +10,13 @@ interface BanniereHeroProps {
 
 const BanniereHero: React.FC<BanniereHeroProps> = ({ film }) => {
   
-  const handlePlay = () => {
-    console.log(`Lancement de ${film.title} (Redirection vers détails)`);
-  };
+  // const handlePlay = () => {
+  //   console.log(`Lancement de ${film.title} (Redirection vers détails)`);
+  // };
 
-  const handleMoreInfo = () => {
-    console.log(`Détails sur ${film.title} (Redirection vers détails)`);
-  };
+  // const handleMoreInfo = () => {
+  //   console.log(`Détails sur ${film.title} (Redirection vers détails)`);
+  // };
 
   const imagePath = film.backdrop_path; 
   
@@ -46,17 +46,17 @@ const BanniereHero: React.FC<BanniereHeroProps> = ({ film }) => {
           {film.overview.length > 150 ? film.overview.substring(0, 150) + '...' : film.overview}
         </p>
 
-        <div className="banniere-hero__actions">
+        {/* <div className="banniere-hero__actions"> */}
           {/* Bouton Primaire Atoms btn */}
-          <Bouton onClick={handlePlay} variant="primaire">
+          {/* <Bouton onClick={handlePlay} variant="primaire">
             <FaPlay size={18} /> &nbsp; Lecture
-          </Bouton>
+          </Bouton> */}
           
           {/* Bouton Secondaire Atoms btn */}
-          <Bouton onClick={handleMoreInfo} variant="secondaire">
+          {/* <Bouton onClick={handleMoreInfo} variant="secondaire">
             <FaInfoCircle size={18} /> &nbsp; Plus d'infos
-          </Bouton>
-        </div>
+          </Bouton> */}
+        {/* </div> */}
       </div>
     </header>
   );
