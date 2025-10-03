@@ -1,0 +1,268 @@
+/* RESET DE BASE MAIS PTET CEST PAS OUF */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #141414;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+html {
+  background-color: #141414;
+}
+
+#root {
+  background-color: #141414;
+  min-height: 100vh;
+}
+
+/* Container du carrousel */
+.carrousel-films {
+  margin: 2rem 0;
+}
+
+.carrousel-films__title {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+/* Wrapper qui contient les flèches + la Bande */
+.carrousel-films__wrapper {
+  position: relative;
+  padding: 0 2rem;
+}
+
+/* Bande scrollable */
+.carrousel-films__row {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 1rem 0;
+
+  /* cache la scrollbar sur Firefox */
+  scrollbar-width: none;
+
+  /* scroll fluide sur mobile */
+  -webkit-overflow-scrolling: touch;
+  pointer-events: none;
+} 
+
+/* Cache la scrollbar sur Chrome/Safari parce que si ca existe */
+.carrousel-films__row::-webkit-scrollbar {
+  display: none;
+}
+
+.carrousel-films__row > * {
+  flex: 0 0 30vw;
+  pointer-events: auto; 
+}
+
+.carrousel-films__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background-color: rgba(20, 20, 20, 0.5);
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.carrousel-films__arrow:hover {
+  background-color: rgba(20, 20, 20, 0.8);
+}
+
+.carrousel-films__arrow--left {
+  left: 0.5rem;
+}
+
+.carrousel-films__arrow--right {
+  right: 0.5rem;
+}
+
+/* Header / Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+  transition: background-color 0.3s ease;
+}
+
+.header.scrolled {
+  background-color: rgba(20, 20, 20, 0.95);
+}
+
+.header-gauche {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo-simplo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e50914;
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+/* Navigation principale */
+.nav-principale ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.lien-nav {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.lien-nav:hover {
+  color: white;
+}
+
+/* Partie droite (recherche/profil) pas plus utile que moi en vrai....*/
+.header-droit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.recherche-profil {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+} 
+
+/* Boutons icônes */
+.bouton--icone {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+
+  /* assure boutons OVER carrousel */
+  position: relative;
+  z-index: 10;
+}
+
+.bouton--icone:hover {
+  opacity: 0.7;
+}
+
+/* Ajuste le contenu principal pour pas passer sous header fixe */
+.main-content {
+  margin-top: 70px;
+}
+
+
+
+
+/* MEDIA QUERY* /
+
+/* TABLETTE */
+@media (max-width: 1024px) {
+  
+  .header {
+    padding: 1rem 1rem;
+  }
+
+  .header-gauche {
+    gap: 1rem;
+  }
+
+  .nav-principale ul {
+    gap: 1rem;
+  }
+
+  .carrousel-films__row > * {
+    flex: 0 0 35vw;
+  }
+
+  .carrousel-films__title {
+    padding-left: 1rem;
+  }
+
+  .carrousel-films__wrapper {
+    padding: 0 1rem;
+  }
+
+  .carrousel-films__arrow--left {
+    left: 0;
+  }
+  .carrousel-films__arrow--right {
+    right: 0;
+  }
+}
+
+
+/* MOBILE */
+@media (max-width: 600px) {
+  
+  .header {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  /* NAV MOBILE */
+  .nav-principale ul {
+    gap: 0.5rem;
+  }
+  
+  .lien-nav {
+    font-size: 0.75rem;
+  }
+
+  .header-gauche {
+    gap: 0.5rem;
+  }
+
+  /* Carrousel : MODE une carte*/
+  .carrousel-films__row > * {
+    flex: 0 0 55vw;
+  }
+
+  .carrousel-films__title {
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+  }
+
+  .carrousel-films__wrapper {
+    padding: 0 0.5rem;
+  }
+
+  .carrousel-films__arrow {
+    display: none;
+  }
+  
+  /* Ajuste le contenu principal pour ne pas passer sous header fixe!!! */
+  .main-content {
+    margin-top: 55px;
+  }
+}
