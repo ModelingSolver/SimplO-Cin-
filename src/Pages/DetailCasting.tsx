@@ -14,7 +14,6 @@ const DetailCasting = () => {
         return null;
     }
 
-
     const { data: personDetail, loading: loadingDetail } = 
         useFetchData<PersonDetail>(`/person/${id}`);
 
@@ -28,17 +27,24 @@ const DetailCasting = () => {
     if (!personDetail) {
         return <div className="not-found">Membre du casting introuvable.</div>;
     }
-// filmography: CastingMember[];
+    // filmography: CastingMember[];
     //RENDU DE LA PAGE
     // Putin d'import de pfffffffffffffffff ......
     // On combine les films et les séries joués par la personne, puis on les trie par popularité/date
-    const filmography: (CastingMember & { filmsOrSeries: FilmOrSerie[] })[] = [
-        ...(credits?.cast || []),
-    ].map((castingMember) => {
+    const filmography: FilmOrSerie[] = (credits?.cast || []).map((castingMember: CastingMember) => {
         return {
-            ...castingMember,
-            filmsOrSeries: [],
-        } satisfies CastingMember & { filmsOrSeries: FilmOrSerie[] };
+            id: castingMember.id,
+            title: castingMember.name, // ici CastingMember.name → on l'utilise comme titre
+            name: castingMember.name,
+            overview: "", // pas dispo sur CastingMember
+            poster_path: castingMember.profile_path,
+            backdrop_path: null,
+            vote_average: 0, // pas dispo sur CastingMember
+            release_date: undefined,
+            first_air_date: undefined,
+            genre_ids: [],
+            popularity: castingMember.popularity,
+        } satisfies FilmOrSerie;
     }).sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
 
     return (
@@ -51,7 +57,7 @@ const DetailCasting = () => {
                 {filmography.length > 0 && (
                     <CarrouselFilms 
                         title={`Filmographie de ${personDetail.name}`} 
-                        films={credits} 
+                        films={filmography} 
                     />
                 )}
 
