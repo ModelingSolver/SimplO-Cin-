@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFetchData } from '../hooks/useFetchData';
-import type {  PersonDetail,  CreditsList, CastingMember, FilmOrSerie } from '../types/simploCineTypes';
+import type {  PersonDetail,  CreditsList,  FilmOrSerie } from '../types/simploCineTypes';
 import Loader from '../Composants/Atoms/Loader';
 import ProfileHeader from '../Composants/Organites/ProfileHeader'; 
 import CarrouselFilms from '../Composants/Organites/CarrouselFilms'; 
@@ -31,21 +31,10 @@ const DetailCasting = () => {
     //RENDU DE LA PAGE
     // Putin d'import de pfffffffffffffffff ......
     // On combine les films et les séries joués par la personne, puis on les trie par popularité/date
-    const filmography: FilmOrSerie[] = (credits?.cast || []).map((castingMember: CastingMember) => {
-        return {
-            id: castingMember.id,
-            title: castingMember.name, // ici CastingMember.name → on l'utilise comme titre
-            name: castingMember.name,
-            overview: "", // pas dispo sur CastingMember
-            poster_path: castingMember.profile_path,
-            backdrop_path: null,
-            vote_average: 0, // pas dispo sur CastingMember
-            release_date: undefined,
-            first_air_date: undefined,
-            genre_ids: [],
-            popularity: castingMember.popularity,
-        } satisfies FilmOrSerie;
-    }).sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+    const filmography: FilmOrSerie[] = (credits?.cast || []).sort(
+  (a, b) => (b.popularity || 0) - (a.popularity || 0)
+);
+
 
     return (
         <article className="detail-casting-page">

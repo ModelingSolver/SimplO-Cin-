@@ -49,7 +49,7 @@ export interface CastingMember {
 
 export interface CreditsList {
     id: number;
-    cast: CastingMember[];
+    cast: FilmOrSerie[];
     crew: any[]; 
 }
 
