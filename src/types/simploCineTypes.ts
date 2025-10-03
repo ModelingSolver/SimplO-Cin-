@@ -31,6 +31,7 @@ export interface DetailFilmOrSerie extends FilmOrSerie {
   budget: number;
   revenue: number;
   status: string;
+  
 }
 
 

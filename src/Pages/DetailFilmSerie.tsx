@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFetchData } from '../hooks/useFetchData';
 import type { DetailFilmOrSerie, CastingMember, FilmOrSerie } from '../types/simploCineTypes';

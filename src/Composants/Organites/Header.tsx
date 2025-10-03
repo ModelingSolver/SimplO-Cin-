@@ -1,8 +1,6 @@
 import React from 'react';
-// Composants Atomes/Molécules
 import Logo from '../Atoms/Logo';
 import NavigationPrincipale from '../Molecules/NavigationPrincipale';
-import RechercheProfil from '../Molecules/RechercheProfil';
 
 const Header = () => {
 

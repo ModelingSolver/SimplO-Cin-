@@ -3,7 +3,6 @@ import { type FilmOrSerie } from '../../types/simploCineTypes';
 import CarteFilm from '../Molecules/CarteFilm';
 import Titre from '../Atoms/Titre';
 import Bouton from '../Atoms/Bouton';
-import Icone from '../Atoms/Icone'; 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 interface CarrouselFilmsProps {

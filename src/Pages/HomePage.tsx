@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useFetchData } from '../hooks/useFetchData';
 import type { FilmOrSerie } from '../types/simploCineTypes';
 import BanniereHero from '../Composants/Molecules/BanniereHero';

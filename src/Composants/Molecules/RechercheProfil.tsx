@@ -1,4 +1,3 @@
-import React from 'react';
 import Icone from '../Atoms/Icone';
 import Bouton from '../Atoms/Bouton';
 
